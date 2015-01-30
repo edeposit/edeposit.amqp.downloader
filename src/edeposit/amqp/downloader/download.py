@@ -8,9 +8,6 @@ import requests
 
 
 # Variables ===================================================================
-
-
-
 # Functions & classes =========================================================
 def head_request(url):
     resp = requests.head(url)
@@ -32,6 +29,8 @@ def progress_download(url, steps, callback):
     output = bytes()
 
     response = requests.get(url, stream=True)
+
+    # handle lenght of the file
     total_length = response.headers.get('content-length')
 
     if total_length is None:  # no content length header
@@ -39,6 +38,7 @@ def progress_download(url, steps, callback):
 
     total_length = int(total_length)
 
+    # download files and compute progress
     last_step = 0
     downloaded_len = 0
     step = int(total_length / steps)
