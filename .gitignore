@@ -1,0 +1,7 @@
+*.pyc
+dist/*
+src/edeposit.amqp.downloader.egg-info/*
+docs/_build
+MANIFEST
+*.html
+tests/__pycache__/*
