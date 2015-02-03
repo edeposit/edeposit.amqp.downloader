@@ -12,6 +12,11 @@ TEST_FILE = "http://kitakitsune.org/bhole/test_file"
 
 
 # Functions & classes =========================================================
+def capture_progress(step, downloaded, content_len):
+    print "Step %d (%d / %d)" % (step, downloaded, content_len)
+
+
+# Tests =======================================================================
 def test_head_request():
     headers = downloader.head_request(TEST_FILE)
 
@@ -26,4 +31,7 @@ def test_download():
 
 
 def test_progress():
-    pass
+    data = downloader.progress_download(TEST_FILE, 5, capture_progress)
+
+    assert data == 1024 * 1024 * 5 * "f"
+
