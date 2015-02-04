@@ -4,21 +4,18 @@
 # Interpreter version: python 2.7
 #
 # Imports =====================================================================
-
-
-
-# Variables ===================================================================
-
+from collections import namedtuple
 
 
 # Functions & classes =========================================================
-class DownloadedFile(url, base64_data):
+class DownloadedFile(namedtuple("DownloadedFile", ["url", "base64_data"])):
     pass
 
 
-class Progress(url, progress):
+class Progress(namedtuple("Progress", ["url", "step", "downloaded",
+                                                      "content_length"])):
     pass
 
 
-class Exists(url, result):
+class Exists(namedtuple("Exists", ["url", "result", "headers"])):
     pass
