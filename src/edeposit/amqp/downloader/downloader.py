@@ -60,6 +60,7 @@ def progress_download(url, steps, callback):
     output = bytes()
 
     response = requests.get(url, stream=True)
+    response.raise_for_status()
 
     # handle lenght of the file
     total_length = response.headers.get('content-length')
