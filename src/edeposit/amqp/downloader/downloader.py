@@ -7,9 +7,18 @@
 import requests
 
 
-# Variables ===================================================================
 # Functions & classes =========================================================
 def head_request(url):
+    """
+    Send HEAD request to given `url`.
+
+    Args:
+        url (str): URL of the internet resource.
+
+    Returns:
+        dict: Dictionary with *headers*. Important headers: ``content-length``\
+              and ``content-type``.
+    """
     resp = requests.head(url)
 
     resp.raise_for_status()
@@ -18,6 +27,15 @@ def head_request(url):
 
 
 def download(url):
+    """
+    Download resource at `url`.
+
+    Args:
+        url (str): URL of the internet resource.
+
+    Returns:
+        str: Content of the downloaded resource.
+    """
     resp = requests.get(url)
 
     resp.raise_for_status()
@@ -26,6 +44,19 @@ def download(url):
 
 
 def progress_download(url, steps, callback):
+    """
+    Download resource at `url` and call `callback` after each step. The number
+    of steps is defined by `steps` parameter.
+
+    Args:
+        url (str): URL of the internet resource.
+        steps (int): Number of steps (how many times will be `callback`
+                     called).
+        callback (fn reference): Reference to function expecting three
+                 arguments: *step* (number of step), *downloaded* (number of
+                 downloaded bytes), *content_len* (size of downloaded
+                 resource).
+    """
     output = bytes()
 
     response = requests.get(url, stream=True)
