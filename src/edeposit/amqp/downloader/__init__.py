@@ -20,8 +20,28 @@ import downloader
 
 
 # Functions & classes =========================================================
-def progress_monitor(step, downloaded, content_len):
-    pass
+def get_progress_reporter(send_back):
+    """
+    Construct progress reporter callback from `send_back` function.
+
+    Args:
+        send_back (fn reference): Reference to function for sending messages
+                  back using AMQP.
+
+    Returns:
+        fn reference: Function taking 3 parameters as is required by \
+                      :func:`.progress_download`.
+    """
+    def progress_reporter_callback(step, downloaded, content_len):
+        send_back(
+            Progress(
+                step=step,
+                downloaded=downloaded,
+                content_length=content_len
+            )
+        )
+
+    return progress_reporter_callback
 
 
 def _instanceof(instance, class_):
@@ -79,7 +99,7 @@ def reactToAMQPMessage(message, send_back):
                 downloader.progress_download(
                     url=message.url,
                     steps=message.steps,
-                    callback=progress_monitor
+                    callback=get_progress_reporter(send_back)
                 )
             )
         )
