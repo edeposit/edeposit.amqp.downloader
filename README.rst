@@ -7,11 +7,11 @@ Introduction
 .. image:: https://pypip.in/d/edeposit.amqp.downloader/badge.png
         :target: https://crate.io/packages/edeposit.amqp.downloader?version=latest
 
-E-Deposit's AMQP bindings to PDF generation libraries.
+Download worker for the Edeposit project.
 
 Documentation
 -------------
 
 Full module documentation and description can be found at Read the Docs:
 
-- edeposit-amqp-downloader.rtfd.org
+- http://edeposit-amqp-downloader.rtfd.org
