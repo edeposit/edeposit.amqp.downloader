@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.3.0
+-----
+    - Connected to AMQP.
+
 0.2.0
 -----
     - First almost working version.
