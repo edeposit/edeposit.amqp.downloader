@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.3.1
+-----
+    - Small bugfix in package system.
+
 0.3.0
 -----
     - Connected to AMQP.
