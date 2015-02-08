@@ -43,6 +43,7 @@ setup(
     zip_safe=False,
     install_requires=[
         "requests",
+        "timeout_wrapper"
     ],
     extras_require={
         "test": [
